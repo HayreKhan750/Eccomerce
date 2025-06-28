@@ -8,8 +8,15 @@ load_dotenv()
 
 server = Flask(__name__)
 
-# Database Configuration
-server.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql+pymysql://username:password@localhost/redstore_db')
+# Database Configuration - Use PostgreSQL
+database_url = os.getenv('DATABASE_URL')
+if database_url:
+    # If DATABASE_URL is provided, use it
+    server.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    # Fallback to local PostgreSQL
+    server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://username:password@localhost/redstore_db'
+
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 server.secret_key = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
 
@@ -75,6 +82,16 @@ def view_submissions():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Database initialization route (for manual setup)
+@server.route('/init-db')
+def init_database():
+    try:
+        with server.app_context():
+            db.create_all()
+        return jsonify({'message': 'Database tables created successfully!'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @server.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
@@ -86,8 +103,11 @@ def internal_error(error):
 # Create database tables
 def create_tables():
     with server.app_context():
-        db.create_all()
-        print("Database tables created successfully!")
+        try:
+            db.create_all()
+            print("✅ Database tables created successfully!")
+        except Exception as e:
+            print(f"❌ Error creating database tables: {e}")
 
 if __name__ == '__main__':
     # Create tables if they don't exist
