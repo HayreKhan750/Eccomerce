@@ -1,8 +1,13 @@
-from flask import Flask, render_template, abort,request,redirect
+from flask import Flask, render_template, abort, request, redirect, flash
 import csv
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 server = Flask(__name__)
+server.secret_key = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
 
 @server.route('/')
 def home():
@@ -18,22 +23,30 @@ def render_page(page):
         return render_template(f'{page}.html')
     abort(404)
 
-
-@server.route('/submit_form', methods = ['POST','GET'])
+@server.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
-    if request.method=='POST':
+    if request.method == 'POST':
         try:
             data = request.form.to_dict()
+            
+            # Basic validation
+            if not data.get('email') or not data.get('subject') or not data.get('message'):
+                flash('All fields are required!', 'error')
+                return redirect('contact.html')
+            
+            # Email validation (basic)
+            if '@' not in data['email']:
+                flash('Please enter a valid email address!', 'error')
+                return redirect('contact.html')
+            
             write_to_csv(data)
+            flash('Message sent successfully!', 'success')
             return redirect('thankyou.html')
-        except:
-            return "Could not save to database"
+        except Exception as e:
+            flash('Could not save to database. Please try again.', 'error')
+            return redirect('contact.html')
     else:
-        return "somthing went wrong!"
-
-
-
-
+        return redirect('contact.html')
 
 def write_to_csv(data):
     file_path = 'database.csv'
@@ -53,3 +66,15 @@ def write_to_csv(data):
             'subject': data['subject'],
             'message': data['message']
         })
+
+@server.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+
+@server.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
+
+if __name__ == '__main__':
+    debug_mode = os.getenv('FLASK_ENV') == 'development'
+    server.run(debug=debug_mode, host='0.0.0.0', port=5000)
