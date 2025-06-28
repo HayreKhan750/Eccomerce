@@ -31,7 +31,7 @@ def home():
 def render_page(page):
     # Only allow rendering of known templates for security
     allowed_pages = [
-        'about', 'account', 'product', 'contact', 'productsdetails', 'cart', 'thankyou'
+        'about', 'account', 'product', 'contact', 'productsdetails', 'cart', 'thankyou', 'admin'
     ]
     if page in allowed_pages:
         return render_template(f'{page}.html')
@@ -91,6 +91,10 @@ def init_database():
         return jsonify({'message': 'Database tables created successfully!'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@server.route('/admin-dashboard')
+def admin_dashboard():
+    return render_template('admin_dashboard.html')
 
 @server.errorhandler(404)
 def not_found_error(error):
