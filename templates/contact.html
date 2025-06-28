@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | RedStore</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/logo.ico') }}">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '2d8060ed1f23d5db6383e290493de078642bc5f0';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <style>
+        .contact-section {
+            background: radial-gradient(#fff, #ffd6d6);
+            padding: 60px 0;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1 1 300px;
+            padding: 40px 30px;
+        }
+
+        .contact-info {
+            background: #ff523b;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+
+        .contact-info .info-item {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info .info-item i {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .contact-info .social {
+            margin-top: 20px;
+        }
+
+        .contact-info .social a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-info .social a:hover {
+            color: #333;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .contact-form p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .contact-form form input,
+        .contact-form form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form form .btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--header section-->
+    {% include 'navbar.html' %}
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Info</h2>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> 123 RedStore Street, Nairobi, Kenya</div>
+                <div class="info-item"><i class="fas fa-phone"></i> +254 700 000 000</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> support@redstore.com</div>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you. Please fill out the form below.</p>
+                <form action="/submit_form" method="post">
+                    <input name="name" type="text" placeholder="Your Name" required>
+                    <input name="email" type="email" placeholder="Your Email" required>
+                    <input name="subject" type="text" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    {% include 'footer.html' %}
+
+    <!--JavaScript for toggle menu-->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+</body>
+
+</html>

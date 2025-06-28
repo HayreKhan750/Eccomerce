@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products | RedStore</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/logo.ico') }}">
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"> ->>> Search Google for Font-awesome for cdn-->
+
+  <!--chatbot widget code-->
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '2d8060ed1f23d5db6383e290493de078642bc5f0';
+    window.smartsupp || (function (d) {
+      var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+      s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+      c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+
+</head>
+
+<body>
+
+  <!--header section-->
+  {% include 'navbar.html' %}
+
+  <!-- cart item details-->
+  <div class="small-container cart-page">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>SubTotal</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="cart-info">
+            <a href="productsdetails.html"><img src="/static/images/buy-1.jpg"></a>
+            <div>
+              <a href="productsdetails.html">
+                <p>Printed Red T-shirt</p>
+              </a>
+              <small>Price : Ksh. 1,000</small>
+              </br>
+              <a href="">Remove</a>
+            </div>
+          </div>
+        </td>
+        <td><input type="number" value="1" min="1"></td>
+        <td>Ksh. 1,000</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="cart-info">
+            <img src="/static/images/buy-2.jpg">
+            <div>
+              <p>Printed Red T-shirt</p>
+              <small>Price : Ksh. 1,000</small>
+              </br>
+              <a href="">Remove</a>
+            </div>
+          </div>
+        </td>
+        <td><input type="number" value="1" min="1"></td>
+        <td>Ksh. 1,000</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="cart-info">
+            <img src="/static/images/buy-3.jpg">
+            <div>
+              <p>Printed Red T-shirt</p>
+              <small>Price : Ksh. 1,000</small>
+              </br>
+              <a href="">Remove</a>
+            </div>
+          </div>
+        </td>
+        <td><input type="number" value="1" min="1"></td>
+        <td>Ksh. 1,000</td>
+      </tr>
+    </table>
+    <!--total-->
+    <div class="total-price">
+
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td>Ksh. 3,000</td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td>Ksh. 150</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>Ksh. 3,150</td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+
+  <!--footer-->
+  {% include 'footer.html' %}
+
+  <!--JavaScript for toggle menu-->
+  <script>
+    var MenuItems = document.getElementById("MenuItems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (MenuItems.style.maxHeight == "0px") {
+        MenuItems.style.maxHeight = "200px";
+      }
+      else {
+        MenuItems.style.maxHeight = "0px";
+      }
+    }
+  </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyBX5RuISf142-7vydPAXrwyFEVFvWzF968",
+      authDomain: "redstore-4abf8.firebaseapp.com",
+      projectId: "redstore-4abf8",
+      storageBucket: "redstore-4abf8.appspot.com",
+      messagingSenderId: "580540135505",
+      appId: "1:580540135505:web:e90dc5dfbd257b74b9e070",
+      measurementId: "G-3NV9B43XD7"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+
+</body>
+
+</html>

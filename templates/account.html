@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account | RedStore</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/logo.ico') }}">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"> ->>> Search Google for Font-awesome for cdn-->
+  <!--chatbot widget code-->
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '2d8060ed1f23d5db6383e290493de078642bc5f0';
+    window.smartsupp || (function (d) {
+      var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+      s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+      c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+
+</head>
+
+<body>
+
+  <!--header section-->
+  {% include 'navbar.html' %}
+
+
+  <!--account page section-->
+  <div class="account-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <img src="/static/images/image1.png" width="100%" alt="image-1">
+        </div>
+
+        <div class="col-2">
+          <div class="form-container">
+            <div class="form-btn">
+              <span onclick="login()">Login</span>
+              <span onclick="register()">Register</span>
+              <hr id="Indicator">
+            </div>
+
+            <form id="LoginForm">
+              <input type="text" placeholder="Username">
+              <input type="password" placeholder="Password">
+              <button type="submit" class="btn">Login</button>
+              <a href="">Forgot Password</a>
+            </form>
+
+            <form id="RegForm">
+              <input type="text" placeholder="Username">
+              <input type="email" placeholder="Email">
+              <input type="password" placeholder="Password">
+              <button type="submit" class="btn">Register</button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--footer-->
+  {% include 'footer.html' %}
+
+  <!--JavaScript for toggle menu-->
+  <script>
+    var MenuItems = document.getElementById("MenuItems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (MenuItems.style.maxHeight == "0px") {
+        MenuItems.style.maxHeight = "200px";
+      }
+      else {
+        MenuItems.style.maxHeight = "0px";
+      }
+    }
+  </script>
+  <!--Js for toggle form-->
+  <script>
+    var LoginForm = document.getElementById("LoginForm");
+    var RegForm = document.getElementById("RegForm");
+    var Indicator = document.getElementById("Indicator");
+
+    function register() {
+
+      RegForm.style.transform = "translateX(0px)";
+      LoginForm.style.transform = "translateX(0px)";
+      Indicator.style.transform = "translateX(150px)";
+    }
+
+    function login() {
+
+      RegForm.style.transform = "translateX(300px)";
+      LoginForm.style.transform = "translateX(300px)";
+      Indicator.style.transform = "translateX(45px)";
+    }
+  </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyBX5RuISf142-7vydPAXrwyFEVFvWzF968",
+      authDomain: "redstore-4abf8.firebaseapp.com",
+      projectId: "redstore-4abf8",
+      storageBucket: "redstore-4abf8.appspot.com",
+      messagingSenderId: "580540135505",
+      appId: "1:580540135505:web:e90dc5dfbd257b74b9e070",
+      measurementId: "G-3NV9B43XD7"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | RedStore</title>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+    integrity="undefined" crossorigin="anonymous">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/logo.ico') }}">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"> ->>> Search Google for Font-awesome for cdn-->
+
+  <!--chatbot widget code-->
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '2d8060ed1f23d5db6383e290493de078642bc5f0';
+    window.smartsupp || (function (d) {
+      var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+      s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+      c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+
+</head>
+
+<body>
+  <!--header section-->
+  <div class="header">
+    <div class="container">
+      {% include 'navbar.html' %}
+
+      <div class="row">
+        <div class="col-2">
+          <h1> Give your workout</br>A New Style</h1>
+          <p>Success isn't always about greatness. It's about consistency. Consistent</br>work gains success. Greatness
+            will come.</p>
+          <!--Button and icon in button-->
+          <a href="" class="btn">Explore Now &#8594;</a>
+        </div>
+        <div class="col-2">
+          <img src="/static/images/image1.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--featured categories-->
+  <div class="categories">
+    <div class="small-container">
+      <div class="row">
+        <div class="col-3">
+          <img src="/static/images/category-1.jpg" alt="category-1-image">
+        </div>
+        <div class="col-3">
+          <img src="/static/images/category-2.jpg" alt="category-2-image">
+        </div>
+        <div class="col-3">
+          <img src="/static/images/category-3.jpg" alt="category-3-image">
+        </div>
+      </div>
+    </div>
+
+    <!--featured products-->
+    <div class="small-container">
+      <h2 class="title">Featured Products</h2>
+      <div class="row">
+        <div class="col-4">
+          <a href="productsdetails.html"><img src="/static/images/product-1.jpg" alt="product-1"></a>
+          <a href="productsdetails.html">
+            <h4>Printed Red T-shirt</h4>
+          </a>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 1,000</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-2.jpg" alt="product-2">
+          <h4>Black Running Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 3,000</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-3.jpg" alt="product-3">
+          <h4>Grey-Black Sweatpants</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 900</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-4.jpg" alt="product-4">
+          <h4>Printed Navy Blue T-shirt</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <p>Ksh. 750</p>
+        </div>
+      </div>
+
+      <!--latest products-->
+      <h2 class="title">Latest Products</h2>
+      <div class="row">
+        <div class="col-4">
+          <img src="/static/images/product-5.jpg" alt="product-5">
+          <h4>Printed Red T-shirt</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 1,000</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-6.jpg" alt="product-6">
+          <h4>Black Running Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 3,000</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-7.jpg" alt="product-7">
+          <h4>Grey-Black Sweatpants</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>Ksh. 900</p>
+        </div>
+        <div class="col-4">
+          <img src="/static/images/product-8.jpg" alt="product-8">
+          <h4>Printed Navy Blue T-shirt</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <p>Ksh. 750</p>
+        </div>
+
+        <!--second row of latest products-->
+        <div class="row">
+          <div class="col-4">
+            <img src="/static/images/product-9.jpg" alt="product-9">
+            <h4>Printed Red T-shirt</h4>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <p>Ksh. 1,000</p>
+          </div>
+          <div class="col-4">
+            <img src="/static/images/product-10.jpg" alt="product-10">
+            <h4>Black Running Shoes</h4>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <p>Ksh. 3,000</p>
+          </div>
+          <div class="col-4">
+            <img src="/static/images/product-11.jpg" alt="product-11">
+            <h4>Grey-Black Sweatpants</h4>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <i class="fa fa-star-o"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <p>Ksh. 900</p>
+          </div>
+          <div class="col-4">
+            <img src="/static/images/product-12.jpg" alt="product-12">
+            <h4>Printed Navy Blue T-shirt</h4>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <p>Ksh. 750</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--offers-->
+    <div class="offer">
+      <div class="small-containers">
+        <div class="row">
+          <div class="col-2">
+            <img src="/static/images/exclusive.png" alt="exclusive-1" class="offer-img">
+          </div>
+          <div class="col-2">
+            <p>Exclusive offers in The Mink Tribe Store</p>
+            <h1>Smart Band 4</h1>
+            <small>The Mi Smart Band 4 features a 39.9% larger(than Mi Band 3) AMOLED color full-touch display with
+              adaptive brightness, so everything is clear as can be.</small></br>
+            <a href="" class="btn">Buy Now &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--testimonial section-->
+    <div class="testimonial">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>Lorem Ipsum is simply the dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standrard dummy text ever.</p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <img src="/static/images/user-1.png" alt="user-1">
+            <h3>Mabel Joe</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>Lorem Ipsum is simply the dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standrard dummy text ever.</p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <img src="/static/images/user-2.png" alt="user-2">
+            <h3>Mike Smith</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>Lorem Ipsum is simply the dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standrard dummy text ever.</p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <img src="/static/images/user-3.png" alt="user-3">
+            <h3>Mary Poppins</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--widget
+<div class="widget">
+  <iframe src="/static/widget.html" width="100%"  height="550"  border="0"></iframe>
+</div> -->
+
+    <!--Brands-->
+    <div class="brands">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-5">
+            <img src="/static/images/logo-godrej.png" alt="logo-godrej">
+          </div>
+          <div class="col-5">
+            <img src="/static/images/logo-oppo.png" alt="logo-oppo">
+          </div>
+          <div class="col-5">
+            <img src="/static/images/logo-coca-cola.png" alt="logo-coca-cola">
+          </div>
+          <div class="col-5">
+            <img src="/static/images/logo-paypal.png" alt="logo-paypal">
+          </div>
+          <div class="col-5">
+            <img src="/static/images/logo-philips.png" alt="logo-philips">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--footer-->
+    {% include 'footer.html' %}
+
+    <!--JavaScript for toggle menu-->
+    <script>
+      var MenuItems = document.getElementById("MenuItems");
+
+      MenuItems.style.maxHeight = "0px";
+
+      function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+          MenuItems.style.maxHeight = "200px";
+        }
+        else {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/static/https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBX5RuISf142-7vydPAXrwyFEVFvWzF968",
+        authDomain: "redstore-4abf8.firebaseapp.com",
+        projectId: "redstore-4abf8",
+        storageBucket: "redstore-4abf8.appspot.com",
+        messagingSenderId: "580540135505",
+        appId: "1:580540135505:web:e90dc5dfbd257b74b9e070",
+        measurementId: "G-3NV9B43XD7"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+</body>
+
+</html>
