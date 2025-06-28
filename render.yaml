@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: redstore-ecommerce
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:server
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false  # You'll set this manually in Render dashboard
+      - key: SMARTSUPP_KEY
+        sync: false  # You'll set this manually in Render dashboard
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false  # You'll set this manually in Render dashboard
+
+databases:
+  - name: redstore-mysql
+    databaseName: redstore_db
+    user: redstore_user 

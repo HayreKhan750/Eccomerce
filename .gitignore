@@ -54,6 +54,10 @@ database.csv
 *.sqlite
 *.sqlite3
 
+# MySQL
+*.sql
+*.dump
+
 # Environment variables
 .env
 .env.local

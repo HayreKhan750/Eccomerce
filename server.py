@@ -1,13 +1,20 @@
-from flask import Flask, render_template, abort, request, redirect, flash
-import csv
+from flask import Flask, render_template, abort, request, redirect, flash, jsonify
 import os
 from dotenv import load_dotenv
+from models import db, Contact
 
 # Load environment variables
 load_dotenv()
 
 server = Flask(__name__)
+
+# Database Configuration
+server.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'mysql+pymysql://username:password@localhost/redstore_db')
+server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 server.secret_key = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
+
+# Initialize database
+db.init_app(server)
 
 @server.route('/')
 def home():
@@ -39,33 +46,34 @@ def submit_form():
                 flash('Please enter a valid email address!', 'error')
                 return redirect('contact.html')
             
-            write_to_csv(data)
+            # Save to database
+            new_contact = Contact(
+                email=data['email'],
+                subject=data['subject'],
+                message=data['message']
+            )
+            
+            db.session.add(new_contact)
+            db.session.commit()
+            
             flash('Message sent successfully!', 'success')
             return redirect('thankyou.html')
+            
         except Exception as e:
+            db.session.rollback()
             flash('Could not save to database. Please try again.', 'error')
             return redirect('contact.html')
     else:
         return redirect('contact.html')
 
-def write_to_csv(data):
-    file_path = 'database.csv'
-    file_exists = os.path.isfile(file_path)
-
-    with open(file_path, mode='a', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['email', 'subject', 'message']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        # Write the header only once, if the file is new
-        if not file_exists or os.stat(file_path).st_size == 0:
-            writer.writeheader()
-
-        # Write the actual form data
-        writer.writerow({
-            'email': data['email'],
-            'subject': data['subject'],
-            'message': data['message']
-        })
+# Admin route to view submissions (for development/testing)
+@server.route('/admin/submissions')
+def view_submissions():
+    try:
+        contacts = Contact.query.order_by(Contact.created_at.desc()).all()
+        return jsonify([contact.to_dict() for contact in contacts])
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @server.errorhandler(404)
 def not_found_error(error):
@@ -75,6 +83,15 @@ def not_found_error(error):
 def internal_error(error):
     return render_template('500.html'), 500
 
+# Create database tables
+def create_tables():
+    with server.app_context():
+        db.create_all()
+        print("Database tables created successfully!")
+
 if __name__ == '__main__':
+    # Create tables if they don't exist
+    create_tables()
+    
     debug_mode = os.getenv('FLASK_ENV') == 'development'
     server.run(debug=debug_mode, host='0.0.0.0', port=5000)

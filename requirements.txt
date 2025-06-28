@@ -7,3 +7,6 @@ click==8.2.1
 blinker==1.9.0
 gunicorn==23.0.0
 python-dotenv==1.0.0
+Flask-SQLAlchemy==3.1.1
+PyMySQL==1.1.0
+cryptography==41.0.7
