@@ -8,14 +8,14 @@ load_dotenv()
 
 server = Flask(__name__)
 
-# Database Configuration - Use PostgreSQL
+# Database Configuration - Use SQLite as fallback for compatibility
 database_url = os.getenv('DATABASE_URL')
-if database_url:
-    # If DATABASE_URL is provided, use it
+if database_url and database_url.startswith('postgresql'):
+    # Use PostgreSQL if available
     server.config['SQLALCHEMY_DATABASE_URI'] = database_url
 else:
-    # Fallback to local PostgreSQL
-    server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://username:password@localhost/redstore_db'
+    # Fallback to SQLite for compatibility
+    server.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///redstore.db'
 
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 server.secret_key = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
